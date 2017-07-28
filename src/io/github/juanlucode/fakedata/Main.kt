@@ -12,13 +12,17 @@ fun main(args: Array<String>) {
     
     println()
 
+    // get genre
     val personCC = PersonCC()
-    println("> Genre ? (F)emale, (M)ale or both (empty): ")
-    personCC.genre = when ( readLine() ) {
-        				"F" -> TGenre.FEMALE
-        				"M" -> TGenre.MALE
-        				else -> {null}
-    }
+    do {
+	    println("> Genre ? (F)emale, (M)ale or both (empty): ")
+	    personCC.genre = when ( readLine() ) {
+	        				"F" -> TGenre.FEMALE
+	        				"M" -> TGenre.MALE
+	        				else -> {null}
+	    }
+    } while (!(personCC.genre == TGenre.FEMALE || personCC.genre == TGenre.MALE || personCC.genre == null))
+    // show countries list from xml file.
     
     val countries = JAXBObjectHandler.cargar(Countries::class.java, File("./data/country/countries.xml"))
     
@@ -28,6 +32,17 @@ fun main(args: Array<String>) {
         println(" ${_country.code} - ${_country.name} ")
     }    
     
+    // get country
+    /*
+    var country: String?
+    do {
+    	println("Nationality (Return for anyone): ")
+        country = readLine()
+        if ( countries.getCountryList().)
+        
+    } while ()
+    */
+    // get minimum age
     var age: String?
     do {
 	    println("> Minimum Age (0 - 100): ")
@@ -42,6 +57,8 @@ fun main(args: Array<String>) {
 						    }
     } while(!(personCC.minAge >= 0 && personCC.minAge <= 100) )
     
+    // get maximum age
+    
     do {
         println("> Maximum age (${personCC.minAge} - 100): ")
         age = readLine()
@@ -54,6 +71,8 @@ fun main(args: Array<String>) {
                             }
         
     } while (!(personCC.maxAge >= personCC.minAge && personCC.maxAge <= 100) )
+    
+    // get amount of fake people
     
     var amount: String?
     do {
