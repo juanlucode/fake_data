@@ -1,5 +1,7 @@
 package io.github.juanlucode.fakedata.model
 
+import io.github.juanlucode.fakedata.model.countries.Countries.Country
+
 data class PersonCC(
 
 				var genre: TGenre? = null,

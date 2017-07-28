@@ -1,24 +1,17 @@
 package io.github.juanlucode.fakedata
 
-import io.github.juanlucode.fakedata.model.Country
 import io.github.juanlucode.fakedata.model.PersonCC
 import io.github.juanlucode.fakedata.model.TGenre
+import io.github.juanlucode.fakedata.model.JAXBObjectHandler
+import java.io.File
+import io.github.juanlucode.fakedata.model.countries.Countries
+import io.github.juanlucode.fakedata.model.countries.Countries.Country
 
 fun main(args: Array<String>) {
     println("Fake-data!")
     
-    val countries: MutableList<Country> = mutableListOf(
-            											Country("ESP", "Spain"),
-                                                        Country("FRA", "France")
-                                          )
-    
-    
-    for ( country: Country in countries){
-        println(" ${country.code} - ${country.name} ")
-    }
-    
-    
-    
+    println()
+
     val personCC = PersonCC()
     println("> Genre ? (F)emale, (M)ale or both (empty): ")
     personCC.genre = when ( readLine() ) {
@@ -26,6 +19,15 @@ fun main(args: Array<String>) {
         				"M" -> TGenre.MALE
         				else -> {null}
     }
+    
+    val countries = JAXBObjectHandler.cargar(Countries::class.java, File("./data/country/countries.xml"))
+    
+    val itCountry = countries?.getCountryList()?.iterator()
+    while (itCountry!!.hasNext()){
+        val _country = itCountry.next()
+        println(" ${_country.code} - ${_country.name} ")
+    }    
+    
     var age: String?
     do {
 	    println("> Minimum Age (0 - 100): ")

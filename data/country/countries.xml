@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<countries>
+    <country
+        code="ESP"
+        name="Spain"
+    />
+    <country
+        code="FRA"
+        name="France"
+    />
+    <country
+        code="ITA"
+        name="Italy"
+    />
+    <country
+        code="PRT"
+        name="Portugal"
+    />        
+</countries>
