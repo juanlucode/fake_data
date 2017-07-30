@@ -27,21 +27,23 @@ fun main(args: Array<String>) {
     val countries = JAXBObjectHandler.cargar(Countries::class.java, File("./data/country/countries.xml"))
     
     val itCountry = countries?.getCountryList()?.iterator()
-    while (itCountry!!.hasNext()){
+	var countriesHashMap: MutableMap<String, Country> = mutableMapOf()
+	
+	while (itCountry!!.hasNext()){
         val _country = itCountry.next()
         println(" ${_country.code} - ${_country.name} ")
+		countriesHashMap.put(_country.code!!, _country)
     }    
     
     // get country
-    /*
+    
     var country: String?
-    do {
-    	println("Nationality (Return for anyone): ")
-        country = readLine()
-        if ( countries.getCountryList().)
-        
-    } while ()
-    */
+    println("Nationality (Return for anyone of availables; several, separates by comma): ")
+    country = readLine()
+	for (_country in country!!.split(",") ){
+	    if ( countriesHashMap.containsKey(_country))
+	    	personCC.nationality?.add(countriesHashMap!!.get(_country)) 
+	}
     // get minimum age
     var age: String?
     do {

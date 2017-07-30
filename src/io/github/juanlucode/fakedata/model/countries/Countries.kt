@@ -140,5 +140,9 @@ class Countries {
          */
         @XmlAttribute(name = "name")
         var name: String? = null
+		
+		override fun toString(): String{
+			return "${this.code} - ${this.name}"
+		}
     }
 }
