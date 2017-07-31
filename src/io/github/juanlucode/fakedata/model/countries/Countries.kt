@@ -48,8 +48,8 @@ import javax.xml.bind.annotation.XmlType
 @XmlRootElement(name = "countries")
 class Countries {
     @XmlElement(required = true)
-    //protected var country: List<Countries.Country>? = null
-    protected var country: MutableList<Countries.Country>? = mutableListOf()
+    
+    protected var country: MutableList<Countries.Country> = mutableListOf()
 
     /**
      * Gets the value of the country property.
@@ -74,7 +74,7 @@ class Countries {
      *
      */
     //fun getCountry(): List<Countries.Country>? {
-    fun getCountryList():MutableList<Countries.Country>? {
+    fun getCountryList():MutableList<Countries.Country> {
         /*
         if (country == null) {
             country = ArrayList<Countries.Country>()

@@ -7,6 +7,7 @@ import java.io.File
 import io.github.juanlucode.fakedata.model.countries.Countries
 import io.github.juanlucode.fakedata.model.countries.Countries.Country
 
+
 fun main(args: Array<String>) {
     println("Fake-data!")
     
@@ -26,23 +27,28 @@ fun main(args: Array<String>) {
     
     val countries = JAXBObjectHandler.cargar(Countries::class.java, File("./data/country/countries.xml"))
     
-    val itCountry = countries?.getCountryList()?.iterator()
-	var countriesHashMap: MutableMap<String, Country> = mutableMapOf()
-	
-	while (itCountry!!.hasNext()){
-        val _country = itCountry.next()
-        println(" ${_country.code} - ${_country.name} ")
-		countriesHashMap.put(_country.code!!, _country)
-    }    
-    
-    // get country
-    
-    var country: String?
-    println("Nationality (Return for anyone of availables; several, separates by comma): ")
-    country = readLine()
-	for (_country in country!!.split(",") ){
-	    if ( countriesHashMap.containsKey(_country))
-	    	personCC.nationality?.add(countriesHashMap!!.get(_country)) 
+	if (countries != null){
+		val itCountry = countries.getCountryList().iterator()
+		var countriesHashMap: MutableMap<String, Country> = mutableMapOf()
+		
+		while (itCountry.hasNext()){
+	        val _country = itCountry.next()
+	        println(" ${_country.code} - ${_country.name} ")
+			countriesHashMap.put(_country.code!!, _country)
+	    }    
+	    
+	    // get country
+	    
+	    var country: String?
+	    println("Nationality (Return for anyone of availables; multi-selection, separates by comma): ")
+	    country = readLine()
+		if (country == null || country.isBlank() || country.isEmpty())
+			personCC.nationality.addAll(countriesHashMap.values)
+		else 
+			for (_country in country.split(",") ){
+			    if ( countriesHashMap.containsKey(_country))
+			    	personCC.nationality.add(countriesHashMap.getValue(_country)) 
+			}
 	}
     // get minimum age
     var age: String?
