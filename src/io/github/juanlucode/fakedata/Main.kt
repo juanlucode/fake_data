@@ -46,8 +46,8 @@ fun main(args: Array<String>) {
 			personCC.nationality.addAll(countriesHashMap.values)
 		else 
 			for (_country in country.split(",") ){
-			    if ( countriesHashMap.containsKey(_country))
-			    	personCC.nationality.add(countriesHashMap.getValue(_country)) 
+				if ( countriesHashMap.containsKey(_country.trim()))
+			    	personCC.nationality.add(countriesHashMap.getValue(_country.trim())) 
 			}
 	}
     // get minimum age
