@@ -141,6 +141,11 @@ class Countries {
         @XmlAttribute(name = "name")
         var name: String? = null
 		
+		// structures for storing data for generating names
+		var firstNamesFemaleList: MutableList<String>? = null
+		var firstNamesMaleList: MutableList<String>? = null
+		var lastNamesList: MutableList<String>? = null
+		
 		override fun toString(): String{
 			return "${this.code} - ${this.name}"
 		}
