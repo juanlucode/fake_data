@@ -46,8 +46,8 @@ fun main(args: Array<String>) {
 			personCC.nationality.addAll(countriesHashMap.values)
 		else 
 			for (_country in country.split(",") ){
-				if ( countriesHashMap.containsKey(_country.trim()))
-			    	personCC.nationality.add(countriesHashMap.getValue(_country.trim())) 
+				if ( countriesHashMap.containsKey(_country.trim().toUpperCase()))
+			    	personCC.nationality.add(countriesHashMap.getValue(_country.trim().toUpperCase())) 
 			}
 	}
     // get minimum age
@@ -96,5 +96,10 @@ fun main(args: Array<String>) {
     } while (!(personCC.amount > 0 && personCC.amount <= 1000))
     
     println(personCC)
+	
+	personCC.loadDataCountries()
+	
+	println(personCC.nationality.get(0).name)
+	println(personCC.nationality.get(0).firstNamesFemaleList?.get(0))
     
 }
