@@ -6,6 +6,7 @@ import io.github.juanlucode.fakedata.model.JAXBObjectHandler
 import java.io.File
 import io.github.juanlucode.fakedata.model.countries.Countries
 import io.github.juanlucode.fakedata.model.countries.Countries.Country
+import io.github.juanlucode.fakedata.model.Person
 
 
 fun main(args: Array<String>) {
@@ -101,5 +102,13 @@ fun main(args: Array<String>) {
 	
 	println(personCC.nationality.get(0).name)
 	println(personCC.nationality.get(0).firstNamesFemaleList?.get(0))
-    
+	
+	var id = 1
+	while (id <= personCC.amount){
+		val newPerson = Person(id, personCC)
+		println(newPerson)
+		id++
+	}
+		
+	
 }
